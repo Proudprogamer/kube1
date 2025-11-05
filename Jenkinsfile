@@ -25,13 +25,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat 'minikube delete'
                     bat 'minikube start'
-                    bat 'minikube addons enable dashboard'
                     bat 'kubectl apply -f my-kube1-deployment.yaml'
                     bat 'kubectl apply -f my-kube1-service.yaml'
-                    bat 'minikube dashboard'
-                    echo 'Deploying application...'
+                    echo '✅ Deployed successfully to Minikube!'
                 }
             }
         }
